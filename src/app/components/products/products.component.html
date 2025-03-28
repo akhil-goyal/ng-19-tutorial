@@ -1,0 +1,22 @@
+<div>
+  <h1>Angular Pipes Demo</h1>
+  <div>
+    @for (product of products; track product.name) {
+    <div>
+      <div>
+        <h3>{{ product.name | uppercase | checkempty }}</h3>
+        <p><strong>Price:</strong> {{ product.price | currency : "USD" }}</p>
+        <p>
+          <strong>Launch Date:</strong>
+          {{ product.launchDate | date : "mediumDate" }}
+        </p>
+        <p><strong>Description:</strong> {{ product.description | json }}</p>
+        <p>
+          <strong>Short Description:</strong> {{ longText | slice : 0 : 30 }}...
+        </p>
+      </div>
+    </div>
+    <br />
+    }
+  </div>
+</div>

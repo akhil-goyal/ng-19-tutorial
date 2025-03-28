@@ -1,0 +1,14 @@
+<app-progress-bar
+  [progressValue]="25"
+  (messageEvent)="receiveMessage($event)"
+></app-progress-bar>
+
+<br />
+
+<p>{{ childMessage }}</p>
+
+<br />
+
+<input type="text" #nameInput placeholder="Enter your name" />
+<br />
+<button (click)="readInput()">Read</button>

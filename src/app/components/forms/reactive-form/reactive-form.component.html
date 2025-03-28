@@ -1,0 +1,25 @@
+<h1>Reactive Form</h1>
+
+<form [formGroup]="userData" (ngSubmit)="onFormSubmit()">
+  <input formControlName="firstName" type="text" placeholder="First Name" />
+  @if (userData.controls['firstName'].errors?.['required'] &&
+  userData.controls['firstName'].touched) {
+  <div>
+    <p class="text-danger">This can't be empty</p>
+  </div>
+  }
+  <input formControlName="lastName" type="text" placeholder="Last Name" />
+  @if (userData.controls['lastName'].errors?.['required'] &&
+  userData.controls['lastName'].touched) {
+  <div>
+    <p class="text-danger">This can't be empty</p>
+  </div>
+  } @if (userData.controls['lastName'].errors?.['minlength'] &&
+  userData.controls['lastName'].touched) {
+  <div>
+    <p class="text-danger">Should be atleast 6 characters</p>
+  </div>
+  }
+  <input formControlName="age" type="number" placeholder="Age" />
+  <button [disabled]="!userData.valid" type="submit">Submit</button>
+</form>

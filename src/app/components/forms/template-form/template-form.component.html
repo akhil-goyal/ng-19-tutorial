@@ -1,0 +1,49 @@
+<h1>Template Form</h1>
+<form #form="ngForm">
+  <input
+    required
+    #firstName="ngModel"
+    name="firstName"
+    [(ngModel)]="userData.firstName"
+    type="text"
+    placeholder="First Name"
+  />
+  @if(firstName.errors?.['required'] && firstName.touched && firstName.dirty) {
+  <div>
+    <p class="text-danger">This can't be empty</p>
+  </div>
+  }
+
+  <input
+    required
+    minlength="6"
+    #lastName="ngModel"
+    name="lastName"
+    [(ngModel)]="userData.lastName"
+    type="text"
+    placeholder="Last Name"
+  />
+  <div>
+    <p
+      *ngIf="lastName.errors?.['required'] && lastName.touched"
+      class="text-danger"
+    >
+      This can't be empty
+    </p>
+    <p
+      *ngIf="lastName.errors?.['minlength'] && lastName.touched"
+      class="text-danger"
+    >
+      Min length should be 6
+    </p>
+  </div>
+  <input
+    name="age"
+    [(ngModel)]="userData.age"
+    type="number"
+    placeholder="Age"
+  />
+  <button [disabled]="form.invalid" type="button" (click)="submitUserData()">
+    Submit Form
+  </button>
+</form>

@@ -1,0 +1,21 @@
+<ng-container
+  *ngIf="shouldDisplayList"
+  [ngTemplateOutlet]="listOfNames"
+  [ngTemplateOutletContext]="{ names: candidates }"
+>
+  <h2>Candidates List</h2>
+</ng-container>
+
+<ng-container
+  *ngIf="shouldDisplayList"
+  [ngTemplateOutlet]="listOfNames"
+  [ngTemplateOutletContext]="{ names: toppers }"
+>
+  <h2>Toppers List</h2>
+</ng-container>
+
+<ng-template #listOfNames let-names="names">
+  <ul>
+    <li *ngFor="let name of names">{{ name }}</li>
+  </ul>
+</ng-template>
