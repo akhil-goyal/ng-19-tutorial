@@ -1,0 +1,5 @@
+<h2>Users Data</h2>
+
+@for (user of users$ | async; track user) {
+<p>{{ user.id }}. {{ user.name }} - {{ user.email }}</p>
+}
